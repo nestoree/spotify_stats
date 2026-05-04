@@ -717,7 +717,7 @@
 
 <script>
 // ── CONFIG ──
-const CLIENT_ID = '899b5567697346699e22427de71b64e9'; // Opcional: pega aqui tu Client ID, o dejalo vacio para pedirlo al conectar.
+const CLIENT_ID = ''; // Cada usuario pegara su Client ID al conectar.
 const REDIRECT_URI = window.location.href.split('?')[0].split('#')[0];
 const SCOPES = [
   'user-top-read',
@@ -893,6 +893,9 @@ async function api(path) {
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
     console.error('Spotify API error:', path, res.status, err);
+    if (res.status === 403) {
+      throw new Error('Spotify respondio 403. Revisa que estes usando tu propio Client ID y que la Redirect URI este configurada exactamente en tu app de Spotify.');
+    }
     const spotifyMessage = err.error?.message || err.error_description || res.statusText;
     throw new Error(`${path} respondio ${res.status}: ${spotifyMessage}`);
   }
@@ -1034,7 +1037,7 @@ async function loadDashboard() {
 
   if (!profile && !topArtists && !topTracks && !recentlyPlayed) {
     clearTimeout(watchdog);
-    showError('Spotify no devolvio datos para esta sesion.', errors.join(' ') || 'Revisa que el Client ID sea correcto y que tu usuario este permitido en la app de Spotify.');
+    showError('Spotify no devolvio datos para esta sesion.', errors.join(' ') || 'Revisa que el Client ID sea correcto y que la Redirect URI coincida con la configurada en Spotify.');
     return;
   }
 
