@@ -42,35 +42,7 @@ Por eso esta web crea su propio historial local:
 
 Esto significa que los minutos acumulados empiezan a contar desde que usas la web. Si borras los datos del navegador, tambien puedes perder ese historial local.
 
-## Crear tu propio Client ID de Spotify
-
-Cada persona que quiera usar la web debe crear su propio **Client ID** en Spotify Developer Dashboard.
-
-1. Entra en:
-
-```
-https://developer.spotify.com/dashboard
-```
-
-2. Inicia sesion con tu cuenta de Spotify.
-3. Pulsa **Create app**.
-4. Escribe un nombre, por ejemplo:
-
-```
-Spotify Stats
-```
-
-5. Escribe una descripcion cualquiera.
-6. En **Redirect URIs**, pega este enlace:
-
-```
-https://nestoree.github.io/spotify_stats/
-```
-
-7. Guarda la app.
-8. Copia el **Client ID**.
-
-## Usar la web con tu Client ID
+## Usar la web
 
 Abre la web:
 
@@ -78,31 +50,7 @@ Abre la web:
 https://nestoree.github.io/spotify_stats/
 ```
 
-Pulsa **Conectar con Spotify**. La web te pedira tu **Client ID** la primera vez. Pegalo ahi y continua con la autorizacion oficial de Spotify.
-
-El Client ID se guarda en tu navegador para que no tengas que pegarlo cada vez.
-
-## Si quieres ejecutarla en local (OPCIONAL)
-
-Desde la carpeta del proyecto:
-
-```
-python3 -m http.server 5500 --bind 127.0.0.1
-```
-
-Luego abre:
-
-```
-http://127.0.0.1:5500/
-```
-
-Si vas a usarla en local, tambien debes anadir esta Redirect URI en Spotify Dashboard:
-
-```
-http://127.0.0.1:5500/
-```
-
-Spotify compara la Redirect URI exactamente, incluida la barra final `/`.
+Pulsa **Conectar con Spotify** e inicia sesion en la pagina oficial de Spotify.
 
 ## Seguridad y privacidad
 
